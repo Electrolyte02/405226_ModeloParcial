@@ -60,14 +60,14 @@
             // nuevaOrdenToolStripMenuItem
             // 
             this.nuevaOrdenToolStripMenuItem.Name = "nuevaOrdenToolStripMenuItem";
-            this.nuevaOrdenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevaOrdenToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.nuevaOrdenToolStripMenuItem.Text = "Nueva Orden";
             this.nuevaOrdenToolStripMenuItem.Click += new System.EventHandler(this.nuevaOrdenToolStripMenuItem_Click);
             // 
             // consultarOrdenesToolStripMenuItem
             // 
             this.consultarOrdenesToolStripMenuItem.Name = "consultarOrdenesToolStripMenuItem";
-            this.consultarOrdenesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultarOrdenesToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.consultarOrdenesToolStripMenuItem.Text = "Consultar Ordenes";
             this.consultarOrdenesToolStripMenuItem.Click += new System.EventHandler(this.consultarOrdenesToolStripMenuItem_Click);
             // 
@@ -82,7 +82,7 @@
             // reporteStockToolStripMenuItem
             // 
             this.reporteStockToolStripMenuItem.Name = "reporteStockToolStripMenuItem";
-            this.reporteStockToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reporteStockToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.reporteStockToolStripMenuItem.Text = "Reporte Stock";
             this.reporteStockToolStripMenuItem.Click += new System.EventHandler(this.reporteStockToolStripMenuItem_Click);
             // 
@@ -95,6 +95,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

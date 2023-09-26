@@ -1,5 +1,6 @@
 ﻿using ModeloParcial.Datos;
 using ModeloParcial.Dominio;
+using ModeloParcial.Servicio;
 using ModeloParcial.Servicio.Interfaz;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,13 @@ namespace ModeloParcial.Presentacion
     {
         List<OrdenRetiro> lOrdenes;
         IServicio servicioDatos;
-        public FrmConsultarOrdenes()
+        FabricaServicio fabrica;
+        public FrmConsultarOrdenes(FabricaServicio fabrica)
         {
             InitializeComponent();
             lOrdenes = new List<OrdenRetiro>();
-            servicioDatos = new Servicio.Implementacion.Servicio();
+            this.fabrica = fabrica;
+            servicioDatos = fabrica.CrearServicio();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -71,7 +74,7 @@ namespace ModeloParcial.Presentacion
             if (dgvOrdenes.CurrentCell.ColumnIndex == 3)
             {
                 int nro = Convert.ToInt32(dgvOrdenes.CurrentRow.Cells["ColumnaId"].Value.ToString());
-                new FrmConsultarOrden(nro).ShowDialog();
+                new FrmConsultarOrden(fabrica, nro).ShowDialog();
             }
         }
 
@@ -100,7 +103,7 @@ namespace ModeloParcial.Presentacion
         private void btnEditar_Click(object sender, EventArgs e)
         {
             int nro = Convert.ToInt32(dgvOrdenes.CurrentRow.Cells["ColumnaId"].Value.ToString());
-            new FrmEditarOrden(nro).ShowDialog();
+            new FrmEditarOrden(fabrica,nro).ShowDialog();
         }
 
         private void FrmConsultarOrdenes_Load(object sender, EventArgs e)

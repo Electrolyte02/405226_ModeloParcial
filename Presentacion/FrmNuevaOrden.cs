@@ -1,4 +1,5 @@
 ﻿using ModeloParcial.Dominio;
+using ModeloParcial.Servicio;
 using ModeloParcial.Servicio.Implementacion;
 using ModeloParcial.Servicio.Interfaz;
 using System;
@@ -15,13 +16,13 @@ namespace ModeloParcial.Presentacion
 {
     public partial class FrmNuevaOrden : Form
     {
-        IServicio servicioDatos;
-        OrdenRetiro ordenRetiro;
+        IServicio servicioDatos = null;
+        OrdenRetiro ordenRetiro = null;
         int auxDetalle;
-        public FrmNuevaOrden()
+        public FrmNuevaOrden(FabricaServicio fabrica)
         {
             InitializeComponent();
-            servicioDatos = new Servicio.Implementacion.Servicio();
+            servicioDatos = fabrica.CrearServicio();
             ordenRetiro = new OrdenRetiro();
             auxDetalle = 1;
             lblOrdenNro.Text += servicioDatos.ObtenerNroProxCarga();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloParcial.Dominio
 {
-    internal class DetalleOrden
+    public class DetalleOrden
     {
         public int idDetalle { get; set; }
         public Material materialDetalle { get; set; }

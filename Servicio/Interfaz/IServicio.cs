@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ModeloParcial.Servicio.Interfaz
 {
-    internal interface IServicio
+    public interface IServicio
     {
         int ObtenerNroProxCarga();
         List<Material> TraerMateriales();

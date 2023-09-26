@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloParcial.Dominio
 {
-    internal class OrdenRetiro
+    public class OrdenRetiro
     {
         public int nroOrden { get; set; }
         public DateTime fechaOrden { get; set; }

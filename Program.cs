@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModeloParcial.Servicio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace ModeloParcial
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipal());
+            Application.Run(new FrmPrincipal(new FabricaServicioImp()));
         }
     }
 }

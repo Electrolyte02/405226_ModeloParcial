@@ -1,4 +1,5 @@
 ﻿using ModeloParcial.Presentacion;
+using ModeloParcial.Servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,24 +14,31 @@ namespace ModeloParcial
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
+        FabricaServicio fabrica = null;
+        public FrmPrincipal(FabricaServicio fabrica)
         {
             InitializeComponent();
+            this.fabrica = fabrica;
         }
 
         private void nuevaOrdenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FrmNuevaOrden().ShowDialog();
+            new FrmNuevaOrden(fabrica).ShowDialog();
         }
 
         private void consultarOrdenesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FrmConsultarOrdenes().ShowDialog();
+            new FrmConsultarOrdenes(fabrica).ShowDialog();
         }
 
         private void reporteStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmReporteStock().ShowDialog();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

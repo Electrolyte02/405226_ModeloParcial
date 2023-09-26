@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloParcial.Dominio
 {
-    internal class Material
+    public class Material
     {
         public int codigoMaterial { get; set; }
         public string nombreMaterial { get; set; }

@@ -1,4 +1,5 @@
 ﻿using ModeloParcial.Dominio;
+using ModeloParcial.Servicio;
 using ModeloParcial.Servicio.Interfaz;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,10 @@ namespace ModeloParcial.Presentacion
     {
         IServicio servicioDatos;
         OrdenRetiro orden;
-        public FrmConsultarOrden(int nro)
+        public FrmConsultarOrden(FabricaServicio fabrica,int nro)
         {
             InitializeComponent();
-            servicioDatos = new Servicio.Implementacion.Servicio();
+            servicioDatos = fabrica.CrearServicio();
             orden = servicioDatos.TraerOrden(nro);
             servicioDatos.TraerDetalles(orden);
         }
