@@ -159,29 +159,6 @@ namespace ModeloParcial.Datos.Implementacion
             return HelperDAO.ObtenerInstancia().ObtenerEscalar("SP_PROXIMA_ORDEN", "@next");
         }
 
-        public OrdenRetiro TraerDetalles(OrdenRetiro ordenRetiro)
-        {
-            SqlConnection conexion = HelperDAO.ObtenerInstancia().ObtenerConexion();
-            conexion.Open();
-            SqlCommand comando = new SqlCommand("SP_CONSULTAR_DETALLES_ORDEN", conexion);
-            comando.CommandType = CommandType.StoredProcedure;
-            Parametro param = new Parametro("@id_orden", ordenRetiro.nroOrden);
-            comando.Parameters.AddWithValue(param.Nombre, param.Valor);
-            DataTable tabla = new DataTable();
-            tabla.Load(comando.ExecuteReader());
-            foreach (DataRow r in tabla.Rows)
-            {
-                DetalleOrden d = new DetalleOrden();
-                d.idDetalle = Convert.ToInt32(r["id_detalle"].ToString());
-                d.materialDetalle.codigoMaterial = Convert.ToInt32(r["material"].ToString());
-                d.materialDetalle.nombreMaterial = r["nom_material"].ToString();
-                d.cantidadDetalle = Convert.ToInt32(r["cantidad"].ToString());
-                ordenRetiro.AgregarDetalle(d);
-            }
-            conexion.Close();
-            return ordenRetiro;
-        }
-
         public List<Material> TraerMateriales()
         {
             List<Material> lMaterial = new List<Material>();
@@ -229,6 +206,23 @@ namespace ModeloParcial.Datos.Implementacion
             {
                 ordenRetiro.fechaOrden = DateTime.Parse(fila["fecha_orden"].ToString());
                 ordenRetiro.responsableOrden = fila["responsable"].ToString();                
+            }
+            conexion.Open();
+            SqlCommand comandoDetalles = new SqlCommand("SP_CONSULTAR_DETALLES_ORDEN", conexion);
+            comandoDetalles.CommandType = CommandType.StoredProcedure;
+            Parametro paramDetalles = new Parametro("@id_orden", ordenRetiro.nroOrden);
+            comandoDetalles.Parameters.AddWithValue(paramDetalles.Nombre, paramDetalles.Valor);
+            DataTable tablaDetalles = new DataTable();
+            tablaDetalles.Load(comandoDetalles.ExecuteReader());
+            conexion.Close();
+            foreach (DataRow r in tablaDetalles.Rows)
+            {
+                DetalleOrden d = new DetalleOrden();
+                d.idDetalle = Convert.ToInt32(r["id_detalle"].ToString());
+                d.materialDetalle.codigoMaterial = Convert.ToInt32(r["material"].ToString());
+                d.materialDetalle.nombreMaterial = r["nom_material"].ToString();
+                d.cantidadDetalle = Convert.ToInt32(r["cantidad"].ToString());
+                ordenRetiro.AgregarDetalle(d);
             }
             return ordenRetiro;
         }

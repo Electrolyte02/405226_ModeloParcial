@@ -22,7 +22,6 @@ namespace ModeloParcial.Presentacion
             InitializeComponent();
             servicioDatos = fabrica.CrearServicio();
             orden = servicioDatos.TraerOrden(nro);
-            servicioDatos.TraerDetalles(orden);
         }
 
         private void FrmConsultarOrden_Load(object sender, EventArgs e)

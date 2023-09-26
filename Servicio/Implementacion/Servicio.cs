@@ -40,11 +40,6 @@ namespace ModeloParcial.Servicio.Implementacion
             return ordenesDAO.ObtenerProximaOrden();
         }
 
-        public OrdenRetiro TraerDetalles(OrdenRetiro ordenRetiro)
-        {
-            return ordenesDAO.TraerDetalles(ordenRetiro);
-        }
-
         public List<Material> TraerMateriales()
         {
             return ordenesDAO.TraerMateriales();

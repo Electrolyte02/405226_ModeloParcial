@@ -13,7 +13,6 @@ namespace ModeloParcial.Servicio.Interfaz
     {
         int ObtenerNroProxCarga();
         List<Material> TraerMateriales();
-        OrdenRetiro TraerDetalles(OrdenRetiro ordenRetiro);
         OrdenRetiro TraerOrden(int nroOrden);
         List<OrdenRetiro> TraerOrdenes(List<Parametro> lParams, string comandoSP);
         bool ConfirmarOrden(OrdenRetiro ordenRetiro);

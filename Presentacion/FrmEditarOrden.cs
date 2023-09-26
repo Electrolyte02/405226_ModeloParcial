@@ -23,7 +23,6 @@ namespace ModeloParcial.Presentacion
             InitializeComponent();
             servicioDatos = fabrica.CrearServicio();
             ordenEditar = servicioDatos.TraerOrden(nro);
-            servicioDatos.TraerDetalles(ordenEditar);
             auxDetalle = 1;
         }
 

@@ -17,6 +17,5 @@ namespace ModeloParcial.Datos.Interfaz
         bool BorrarOrden(int nroOrden);
         List<OrdenRetiro> TraerOrdenes(List<Parametro> lParams, string nombreSP);
         List<Material> TraerMateriales();
-        OrdenRetiro TraerDetalles(OrdenRetiro ordenRetiro);
     }
 }
